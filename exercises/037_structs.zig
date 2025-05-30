@@ -36,6 +36,7 @@ const Character = struct {
     role: Role,
     gold: u32,
     experience: u32,
+    health: u8, // New property for health
 };
 
 pub fn main() void {
@@ -44,6 +45,7 @@ pub fn main() void {
         .role = Role.wizard,
         .gold = 20,
         .experience = 10,
+        .health = 100, // Initial health
     };
 
     // Glorp gains some gold.

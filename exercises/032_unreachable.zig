@@ -35,6 +35,15 @@ pub fn main() void {
             3 => {
                 current_value *= current_value;
             },
+            else => {
+                // This is the unreachable statement. It tells the
+                // compiler that this code should never be reached.
+                // If it is, it will produce a compile-time error.
+
+                // 我怀疑下面这行不会被打印
+                std.debug.print("Unreachable operation: {}\n", .{op});
+                unreachable;
+            },
         }
 
         std.debug.print("{} ", .{current_value});
