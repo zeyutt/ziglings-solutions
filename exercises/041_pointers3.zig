@@ -31,11 +31,18 @@ pub fn main() void {
 
     // Please define pointer "p" so that it can point to EITHER foo or
     // bar AND change the value it points to!
-    ??? p: ??? = undefined;
+    var p: *u8 = undefined; // 初始化
 
-    p = &foo;
-    p.* += 1;
-    p = &bar;
-    p.* += 1;
+    p = &foo; // 指向 foo
+    p.* += 1; // 修改指向值
+    p = &bar; // 指向 bar
+    p.* += 1; // 修改指向值
+    // Now foo should be 6 and bar should be 11
     std.debug.print("foo={}, bar={}\n", .{ foo, bar });
+    // p = &foo; // 再次指向 foo
+    // p.* += 1; // 再次修改指向值
+    // // Now foo should be 7
+    // p = &bar; // 再次指向 bar
+    // p.* += 1; // 再次修改指向值
+    // std.debug.print("foo={}, bar={}\n", .{ foo, bar });
 }
