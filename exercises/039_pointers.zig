@@ -20,6 +20,12 @@
 // We'll see why pointers are useful in a moment. For now, see if you
 // can make this example work!
 //
+
+// key:value
+// &foo:foo
+// &foo is type of
+// *&foo = foo
+
 const std = @import("std");
 
 pub fn main() void {
