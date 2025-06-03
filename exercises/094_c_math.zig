@@ -26,7 +26,8 @@ const std = @import("std");
 
 const c = @cImport({
     // What do we need here?
-    ???
+    @cInclude("math.h");
+    // We need the math library for the fmod function.
 });
 
 pub fn main() !void {

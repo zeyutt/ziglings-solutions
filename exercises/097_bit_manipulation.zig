@@ -76,11 +76,11 @@ pub fn main() !void {
     var y: u8 = 0b1011;
 
     // Now we swap the values of the two variables by doing xor on them
-    x ^= y;
+    x ^= y; // c = v ^ k; v = c ^ k; k = c ^ v;
     y ^= x;
 
     // What must be written here?
-    ???;
+    x ^= y;
 
     print("x = {b}; y = {b}\n", .{ x, y });
 }
