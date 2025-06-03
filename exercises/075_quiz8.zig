@@ -48,8 +48,19 @@ const Path = struct {
 // instead.
 //
 // Please fill in the body of this function!
-fn makePath(from: *Place, to: *Place, dist: u8) Path {
-
+fn makePath(comptime from: *Place, comptime to: *Place, comptime dist: u8) Path {
+    // This function should return a Path struct with the
+    // 'from', 'to', and 'dist' fields set to the values passed
+    // in as parameters.
+    //
+    // The 'comptime' keyword means that this function will be
+    // executed at compile time, so it can be used to create
+    // Paths without having to write out all the fields by hand.
+    return Path{
+        .from = from,
+        .to = to,
+        .dist = dist,
+    };
 }
 
 // Using our new function, these path definitions take up considerably less
