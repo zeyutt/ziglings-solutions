@@ -38,10 +38,11 @@ pub fn main() void {
 
 // Please complete this function which prints an anonymous struct
 // representing a circle.
-fn printCircle(???) void {
+fn printCircle(circle: anytype) void {
     print("x:{} y:{} radius:{}\n", .{
         circle.center_x,
         circle.center_y,
         circle.radius,
     });
 }
+// 这样看起来zig的函数确实更加原生的多类型支持和抽象。
