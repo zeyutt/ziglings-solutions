@@ -63,11 +63,11 @@
 //     print("Catch-{x:0>4}.", .{twenty_two});
 //
 // This formatting instruction outputs a hexadecimal number with
-// leading zeros:
+// leading zeros: 格式化指令输出一个带前导零的十六进制数
 //
 //     Catch-0x0016.
 //
-// Or you can center-align a string like so:
+// Or you can center-align a string like so: 像这样居中对齐一个字符串
 //
 //     print("{s:*^20}\n", .{"Hello!"});
 //
@@ -79,6 +79,7 @@
 // the one thing missing from our lives is a multiplication table
 // for all numbers from 1-15. We want the table to be nice and
 // neat, with numbers in straight columns like so:
+//  1-15所有数字的乘法表
 //
 //      X |  1   2   3   4   5  ...
 //     ---+---+---+---+---+---+
@@ -131,7 +132,7 @@ pub fn main() !void {
         for (0..size) |b| {
             // What formatting is needed here to make our columns
             // nice and straight?
-            print("{???} ", .{(a + 1) * (b + 1)});
+            print("{d:>3} ", .{(a + 1) * (b + 1)});
         }
 
         // After each row we use double line feed:

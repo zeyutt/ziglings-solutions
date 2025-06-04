@@ -37,9 +37,11 @@ const print = std.debug.print;
 
 pub fn main() void {
     const hex_nums = [_]u8{ 0xb, 0x2a, 0x77 };
-    const dec_nums = [_]u8{ 11, 42, 119 };
+    const dec_nums = [_]u8{ 11, 42, 119, 120 };
+    // 长度不一致会出现编译错误
+    // error: non-matching for loop lengths
 
-    for (hex_nums, ???) |hn, ???| {
+    for (hex_nums, dec_nums[0..3]) |hn, dn| {
         if (hn != dn) {
             print("Uh oh! Found a mismatch: {d} vs {d}\n", .{ hn, dn });
             return;
