@@ -619,9 +619,36 @@ const PrintStep = struct {
         return self;
     }
 
+    // fn make(step: *Step, _: Step.MakeOptions) !void {
+    //     const self: *PrintStep = @alignCast(@fieldParentPtr("step", step));
+    //     print("{s}", .{self.message});
+    // }
     fn make(step: *Step, _: Step.MakeOptions) !void {
         const self: *PrintStep = @alignCast(@fieldParentPtr("step", step));
-        print("{s}", .{self.message});
+
+        // 应用渐变色和斜体效果
+        if (use_color_escapes) {
+            // 分行处理logo，为每行应用不同的颜色
+            var lines = std.mem.splitScalar(u8, self.message, '\n'); // 修复：使用 splitScalar
+            var line_count: u8 = 0;
+
+            while (lines.next()) |line| {
+                switch (line_count) {
+                    1 => print("\x1b[3m\x1b[38;5;45m{s}\x1b[0m\n", .{line}), // 浅蓝色斜体
+                    2 => print("\x1b[3m\x1b[38;5;39m{s}\x1b[0m\n", .{line}), // 蓝色斜体
+                    3 => print("\x1b[3m\x1b[38;5;33m{s}\x1b[0m\n", .{line}), // 深蓝色斜体
+                    4 => print("\x1b[3m\x1b[38;5;27m{s}\x1b[0m\n", .{line}), // 更深蓝色斜体
+                    5 => print("\x1b[3m\x1b[38;5;21m{s}\x1b[0m\n", .{line}), // 深蓝紫色斜体
+                    6 => print("\x1b[3m\x1b[38;5;21m{s}\x1b[0m\n", .{line}), // 深蓝紫色斜体
+                    8 => print("\x1b[3m\x1b[38;5;196m{s}\x1b[0m\n", .{line}), // 红色斜体用于引语
+                    else => print("{s}\n", .{line}), // 其他行保持原样
+                }
+                line_count += 1;
+            }
+        } else {
+            // 如果不支持颜色，就直接打印原始消息
+            print("{s}", .{self.message});
+        }
     }
 };
 
